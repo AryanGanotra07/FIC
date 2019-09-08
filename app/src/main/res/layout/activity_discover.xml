@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Discover"
+    android:background="@color/white"
+  >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true">
+
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/viewpager"
+       android:layout_marginTop="10dp"
+        android:elevation="10dp"
+        android:outlineAmbientShadowColor="@color/colorPrimary"
+        android:outlineSpotShadowColor="@color/colorPrimary"
+        android:onClick="onClick"
+        android:background="@color/browser_actions_bg_grey"
+
+        >
+
+
+    </android.support.v4.view.ViewPager>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/viewpager1"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:elevation="10dp"
+        android:outlineAmbientShadowColor="@color/colorPrimary"
+        android:outlineSpotShadowColor="@color/colorPrimary"
+        android:layout_below="@id/viewpager"
+        android:background="@color/browser_actions_bg_grey"
+        android:onClick="onClick"
+
+
+        >
+    </android.support.v4.view.ViewPager>
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:clipToPadding="true"
+        android:id="@+id/recycler_view"
+        android:visibility="gone">
+
+
+
+
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To discover more,"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textAppearance="@style/MenuItems"
+            android:shadowColor="@color/colorPrimary"
+            android:outlineSpotShadowColor="@color/colorPrimary"
+            android:outlineAmbientShadowColor="@color/colorPrimary"
+            android:textStyle="bold"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Follow"
+            android:id="@+id/followbutton"
+            android:onClick="onClick"/>
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>

@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:background="@color/white"
+    android:id="@+id/rl"
+
+
+    app:strokeColor="@color/browser_actions_bg_grey"
+    android:clickable="true"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+
+        android:id="@+id/scrollView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.design.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/title"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textAppearance="@style/MenuItems"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="200dp"
+            android:layout_margin="5dp"
+            android:id="@+id/image"
+            android:visibility="gone"
+            />
+
+            </LinearLayout>
+
+
+        </android.support.design.card.MaterialCardView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+
+
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:id="@+id/webView"
+        android:padding="5dp"
+        android:onClick="onClick"
+
+        android:strokeColor="@color/browser_actions_bg_grey"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
+        />
+
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:outlineSpotShadowColor="@color/colorPrimary"
+        android:outlineAmbientShadowColor="@color/colorPrimary"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone"
+
+        android:progress="22"
+
+        android:min="12"
+        android:max="32"
+
+        android:id="@+id/seekbar"
+
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/readmode"
+        android:layout_above="@id/textsize"
+
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:id="@+id/readmode"
+
+        app:rippleColor="@color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:onClick="onClick"
+        android:scrollbars="none"
+        app:elevation="2dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/textsize"
+        android:layout_above="@id/sharebutton"
+        android:id="@+id/textsize"
+
+
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+
+        app:rippleColor="@color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:onClick="onClick"
+        android:scrollbars="none"
+        app:elevation="2dp"
+        />
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/share"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="10dp"
+        android:id="@+id/sharebutton"
+        app:rippleColor="@color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
+
+        android:onClick="onClick"
+        android:scrollbars="none"
+        app:elevation="2dp"
+        />
+
+</RelativeLayout>

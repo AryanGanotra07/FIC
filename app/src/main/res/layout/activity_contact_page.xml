@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/GreenTheme"
+    tools:context=".ContactPage">
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/ll">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/ll2"
+        android:layout_above="@id/ll"
+
+
+
+
+
+
+        >
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Us"
+        android:textSize="30sp"
+
+        android:layout_margin="5dp"
+        android:padding="10dp"
+
+        android:textAppearance="@style/MenuItems"
+
+        android:gravity="center"
+
+        />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Call us"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="5dp"
+            android:textStyle="italic"
+            android:textAppearance="@style/MenuItems"
+            />
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:text="Call"
+                android:drawableLeft="@drawable/phone"
+                android:padding="10dp"
+                android:id="@+id/callbutton"
+                android:onClick="onClick"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Write to us"
+                android:textSize="25sp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:textStyle="italic"
+                android:textAppearance="@style/MenuItems"
+                />
+
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:text="Email"
+                android:drawableLeft="@drawable/emailcontact"
+                android:padding="10dp"
+                android:id="@+id/emailbutton"
+                android:onClick="onClick"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visit Our Website"
+                android:textSize="25sp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:textStyle="italic"
+                android:textAppearance="@style/MenuItems"
+                />
+
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="25dp"
+                android:text="Visit Us"
+                android:drawableLeft="@drawable/website"
+                android:padding="10dp"
+                android:id="@+id/websitebutton"
+                android:onClick="onClick"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+           android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:id="@+id/ll"
+
+
+
+
+
+            >
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/facebook"
+                android:layout_margin="8dp"
+                android:id="@+id/facebook"
+                android:onClick="onClick"
+
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/instagram"
+                android:layout_margin="8dp"
+                android:id="@+id/instagram"
+                android:onClick="onClick"
+                />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/linkedin"
+                android:layout_margin="8dp"
+                android:id="@+id/linkedin"
+                android:onClick="onClick"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/twitter"
+                android:layout_margin="8dp"
+                android:id="@+id/twitter"
+                android:onClick="onClick"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+</RelativeLayout>
+
+
+
+

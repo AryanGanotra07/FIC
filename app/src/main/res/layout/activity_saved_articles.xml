@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SavedArticles"
+    android:orientation="vertical">
+
+  <!--  <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/material_green_700">
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        tools:layout_editor_absoluteX="8dp" />
+
+
+
+
+-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+    <android.support.v7.widget.AppCompatAutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter name/ticker"
+        android:layout_weight="7"
+        android:id="@+id/tickertext"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_margin="5dp"
+        android:imeOptions="actionDone"
+        android:textAppearance="@style/MenuItems"
+        android:textSize="15sp"
+        />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:id="@+id/tickerenter"
+            android:onClick="onClick"
+            android:layout_margin="5dp"
+
+
+
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="e.g ^NSEI for NIFTY, ^BSESN for SENSEX, AAPL for APPLE"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="@style/MenuItems"
+        android:textSize="13.5sp"
+       />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="National Stock Exchanges- eg 'NSE:LUPIN' for LUPIN"
+        android:layout_marginLeft="5dp"
+        android:textAppearance="@style/MenuItems"
+        android:textSize="13.5sp"
+        />
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       app:cardElevation="5dp"
+       android:layout_margin="5dp"
+        app:cardBackgroundColor="@color/fui_transparent"
+        android:outlineSpotShadowColor="@color/colorPrimary"
+        android:outlineAmbientShadowColor="@color/colorPrimary"
+
+        android:tooltipText="Zoom out to see values"
+
+
+
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/ll1"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="^NSEI"
+                        android:textSize="22sp"
+                        android:layout_margin="7dp"
+                        android:id="@+id/MainText"
+                        android:textAppearance="@style/MenuItems"
+
+                        />
+<!--
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NSE: NIFTY"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="7dp"
+                        android:id="@+id/subText"
+
+                        />
+-->
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/ll2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp">
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:textSize="30sp"
+                        android:gravity="center"
+                        android:id="@+id/mainvalue"
+                        />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:id="@+id/changeValue"
+                            android:textSize="18sp"
+                            android:layout_below="@id/mainvalue"
+
+
+                            android:textColor="@color/colorPrimary"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="18sp"
+                            android:id="@+id/changePercent"
+                            android:layout_below="@id/mainvalue"
+
+
+                            android:textColor="@color/colorPrimary"
+                            />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_toRightOf="@id/ll2"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/arrow"
+                            android:layout_gravity="center"
+                            android:foregroundGravity="center"
+
+                            android:layout_centerVertical="true"
+
+
+                            />
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/example_chart"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/subText"
+
+
+
+
+                />
+
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>

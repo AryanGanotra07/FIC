@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".FirebaseAuthUI"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logo"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:text="Finance and Investment Cell, SRCC"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textAppearance="@style/MenuItems"
+        android:layout_marginTop="25dp"
+        android:id="@+id/text"
+        android:gravity="center"
+        android:fontFamily="sans-serif-smallcaps"
+        android:padding="15dp"
+        />
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_below="@id/text"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+       android:layout_marginTop="20dp"
+        android:layout_below="@id/text"
+
+
+        android:layout_centerHorizontal="true"
+
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/fui_bgEmail"
+            android:text="Access with email"
+            android:textAppearance="@style/MenuItems"
+            android:textSize="18sp"
+            android:id="@+id/emailsign"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/email"
+            android:layout_marginLeft="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginRight="10dp"
+            android:drawablePadding="20dp"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/browser_actions_bg_grey"
+            android:text="Access with Google"
+            android:textAppearance="@style/MenuItems"
+            android:textSize="18sp"
+            android:id="@+id/googlesign"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/gmail"
+            android:layout_marginLeft="10dp"
+           android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginRight="10dp"
+            android:drawablePadding="20dp"
+            android:layout_gravity="center"
+
+            />
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_marginTop="30dp"
+
+            android:id="@+id/tos"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/MenuItems"
+            android:textStyle="bold"/>
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
