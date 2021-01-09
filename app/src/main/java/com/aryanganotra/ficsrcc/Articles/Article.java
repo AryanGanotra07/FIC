@@ -1,6 +1,6 @@
 package com.aryanganotra.ficsrcc.Articles;
 
-import android.arch.lifecycle.ViewModel;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 

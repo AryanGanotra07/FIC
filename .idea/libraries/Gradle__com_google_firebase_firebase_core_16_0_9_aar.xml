@@ -2,7 +2,9 @@
   <library name="Gradle: com.google.firebase:firebase-core:16.0.9@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.9.aar/4640d8c435ceb7c641cb7993b2f3ddfe/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.9.aar/4640d8c435ceb7c641cb7993b2f3ddfe/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f465c0ed6dbd7eef913bd3a8063afdb8/jetified-firebase-core-16.0.9/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f465c0ed6dbd7eef913bd3a8063afdb8/jetified-firebase-core-16.0.9/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f465c0ed6dbd7eef913bd3a8063afdb8/jetified-firebase-core-16.0.9/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-core/16.0.9/d744794686c273d9fe2fdad77ee686c87a47625b/firebase-core-16.0.9-javadoc.jar!/" />

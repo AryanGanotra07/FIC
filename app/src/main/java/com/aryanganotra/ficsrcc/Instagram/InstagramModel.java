@@ -1,7 +1,5 @@
 package com.aryanganotra.ficsrcc.Instagram;
 
-import android.media.Image;
-
 import java.util.List;
 
 public class InstagramModel {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,18 +11,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
         android:layout_centerInParent="true">
 
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:id="@+id/viewpager"
-       android:layout_marginTop="10dp"
         android:elevation="10dp"
+        android:layout_weight="1"
         android:outlineAmbientShadowColor="@color/colorPrimary"
         android:outlineSpotShadowColor="@color/colorPrimary"
         android:onClick="onClick"
@@ -31,14 +30,17 @@
         >
 
 
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
-    <android.support.v4.view.ViewPager
+
+
+    <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/viewpager1"
         android:layout_marginTop="15dp"
         android:padding="5dp"
+        android:visibility="gone"
         android:elevation="10dp"
         android:outlineAmbientShadowColor="@color/colorPrimary"
         android:outlineSpotShadowColor="@color/colorPrimary"
@@ -48,12 +50,12 @@
 
 
         >
-    </android.support.v4.view.ViewPager>
+    </androidx.viewpager.widget.ViewPager>
 
 
 
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -65,13 +67,14 @@
 
 
 
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp">
 
@@ -94,6 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Follow"
+            android:textColor="@color/white"
             android:id="@+id/followbutton"
             android:onClick="onClick"/>
 
@@ -106,4 +110,4 @@
 
 
 
-</ScrollView>
+</RelativeLayout>

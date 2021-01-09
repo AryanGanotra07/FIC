@@ -2,8 +2,6 @@ package com.aryanganotra.ficsrcc.StockService;
 
 import java.util.List;
 
-import javax.xml.transform.Result;
-
 public class StockResultModel {
     private ResultSetClass ResultSet;
 

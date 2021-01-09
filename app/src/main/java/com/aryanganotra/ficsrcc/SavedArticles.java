@@ -5,18 +5,16 @@ import android.content.Intent;
 
 import android.os.Build;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 
-import android.support.v4.view.GravityCompat;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -41,6 +39,8 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -131,7 +131,7 @@ public class SavedArticles extends AppCompatActivity implements RetrofitClient.R
         maintext=(TextView)findViewById(R.id.MainText);
 
 
-        ticker="^NSEI";
+        ticker="BSE";
 
 
         fetchData(SavedArticles.this);
@@ -350,7 +350,7 @@ public class SavedArticles extends AppCompatActivity implements RetrofitClient.R
                             if (ticker != null && ticker.isEmpty()) {
 
 
-                                ticker = "^NSEI";
+                                ticker = "BSE";
 
                             }
                             fetchData(SavedArticles.this);
@@ -367,7 +367,7 @@ public class SavedArticles extends AppCompatActivity implements RetrofitClient.R
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Constants.VINTAGEAPI = (String) dataSnapshot.child("vintageapi").getValue();
                     if (Constants.VINTAGEAPI!=null){
-                        ticker = "^NSEI";
+                        ticker = "BSE";
                         fetchData(SavedArticles.this);
                     }
                 }

@@ -3,19 +3,22 @@ package com.aryanganotra.ficsrcc.Articles;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,6 +41,8 @@ import com.aryanganotra.ficsrcc.FirebaseAuthUI;
 import com.aryanganotra.ficsrcc.R;
 import com.aryanganotra.ficsrcc.SavedArticles;
 import com.aryanganotra.ficsrcc.UserActivity;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +59,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ArticlesListFragment extends Fragment{
+public class ArticlesListFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private Spinner spinner;
@@ -250,7 +255,7 @@ public class ArticlesListFragment extends Fragment{
 
 
 
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar)getView().findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) getView().findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
 
@@ -297,7 +302,6 @@ public class ArticlesListFragment extends Fragment{
 
         if (Constants.WEBSITE!=null) {
 
-
             Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.WEBSITE).addConverterFactory(GsonConverterFactory.create()).build();
             service = retrofit.create(ArticleService.class);
             adapter1=new RecyclerAdapter1(context,callback,service);
@@ -323,9 +327,9 @@ public class ArticlesListFragment extends Fragment{
 
 
 
-        android.support.v7.widget.SearchView searchView= (android.support.v7.widget.SearchView)getView().findViewById(R.id.searchbutton);
+        SearchView searchView= (SearchView)getView().findViewById(R.id.searchbutton);
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -401,7 +405,7 @@ public class ArticlesListFragment extends Fragment{
 
         if (id!=-1) {
 
-            Call<List<Article>> articlesCall = service.getArticles(String.valueOf(id), 100,"");
+            Call<List<Article>> articlesCall = service.getArticles(String.valueOf(id), 15,"");
             articlesCall.enqueue(new Callback<List<Article>>() {
                 @Override
                 public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
@@ -437,7 +441,7 @@ public class ArticlesListFragment extends Fragment{
 
         }
         else if (id==-1){
-            Call<List<Article>> callArticles=service.getAllArticles(100,"");
+            Call<List<Article>> callArticles=service.getAllArticles(15,"");
             callArticles.enqueue(new Callback<List<Article>>() {
                 @Override
                 public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
@@ -447,16 +451,16 @@ public class ArticlesListFragment extends Fragment{
                         snackbar.dismiss();
                     }
 
-
-
                     bookLoading.setVisibility(View.GONE);
                     progressBarH.setVisibility(View.GONE);
                     articles = response.body();
                     if (category.getId()==((Category)spinner.getSelectedItem()).getId()) {
                         adapter1.setArticles(articles);
+                        Log.d("ArticlesListFragment", "setting articles..."+articles.get(0).title);
                     }
                     else {
                         getArticles(((Category)spinner.getSelectedItem()).getId());
+                        Log.d("ArticlesListFragment", "getting new articles...");
                     }
                 }
 
@@ -464,7 +468,7 @@ public class ArticlesListFragment extends Fragment{
                 public void onFailure(Call<List<Article>> call, Throwable t) {
                     Category category= (Category) spinner.getSelectedItem();
                     getArticles(category.getId());
-
+                    Log.d("ArticlesListFragment", "getting articles failed..."+t.getMessage());
 
                 }
             });

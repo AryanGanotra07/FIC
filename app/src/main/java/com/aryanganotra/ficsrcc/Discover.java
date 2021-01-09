@@ -1,28 +1,19 @@
 package com.aryanganotra.ficsrcc;
 
-import android.animation.ValueAnimator;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
+
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.TooltipCompat;
+
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -33,31 +24,21 @@ import com.aryanganotra.ficsrcc.Instagram.InstagramModel;
 import com.aryanganotra.ficsrcc.Instagram.InstagramService;
 import com.aryanganotra.ficsrcc.Instagram.ViewPagerAdapterM;
 import com.aryanganotra.ficsrcc.Instagram.ViewPagerAdapterS;
-import com.aryanganotra.ficsrcc.alphavantagestockapp.AlphaVantageAPIService;
-import com.google.android.gms.common.util.Strings;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Timer;
 import java.util.TimerTask;
 
 import retrofit2.Call;
@@ -72,7 +53,7 @@ public class Discover extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView navigationView;
-    private ViewPager viewPager;
+    private ViewPager viewPager, vp1, vp2;
 
     private ViewPager viewPager1;
 
@@ -121,102 +102,114 @@ public class Discover extends AppCompatActivity {
 
 
 
-       viewPager=(ViewPager)findViewById(R.id.viewpager);
 
-        viewPager.setPadding(100,0,100,0);
-        viewPager.setClipToPadding(false);
+        viewPager=findViewById(R.id.viewpager);
+//        viewPager.setPadding(100,0,100,0);
+//        viewPager.setClipToPadding(false);
         viewPager.setPageMargin(20);
 
-        viewPager1=(ViewPager)findViewById(R.id.viewpager1);
+//        vp1=findViewById(R.id.vp_2);
+////        vp1.setPadding(100,0,100,0);
+////        vp1.setClipToPadding(false);
+////        vp1.setPageMargin(20);
+//
+//        vp2=findViewById(R.id.vp_3);
+//        vp2.setPadding(100,0,100,0);
+//        vp2.setClipToPadding(false);
+//        vp2.setPageMargin(20);
 
+        getImages();
+//
+//        viewPager1=(ViewPager)findViewById(R.id.viewpager1);
+//
+//
+//        viewPager1.setClipToPadding(false);
+//        viewPager1.setPadding(280,0,280,0);
+//        viewPager1.setPageMargin(20);
 
-        viewPager1.setClipToPadding(false);
-        viewPager1.setPadding(280,0,280,0);
-        viewPager1.setPageMargin(20);
-
-        getData();
-
-
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
-
-            }
-
-            @Override
-            public void onPageSelected(int i) {
-                if (instaData.getData().get(i).getCarousel_media()!=null) {
-                    n = instaData.getData().get(i).getCarousel_media().size();
-                }
-                else if (instaData.getData().get(i).getType().equals("image") && instaData.getData().get(i).getImages()!=null&& instaData.getData().get(i).getImages().getStandard_resolution().getUrl()!=null){
-                    n=1;
-
-                }
-                else {
-                    n=0;
-                }
-               viewPager1.setAdapter(new ViewPagerAdapterS(instaData,i));
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int i) {
-
-            }
-        });
-
-        LinearLayout.LayoutParams params=(LinearLayout.LayoutParams)viewPager.getLayoutParams();
-        int lHeight=params.height;
-
-        params1=(LinearLayout.LayoutParams)viewPager1.getLayoutParams();
-        int sHeight=params1.height;
-
-
-
-
-
-
-
-
-
-
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (!(viewPager1.getHeight() < lHeight)) {
-                    params1.height = sHeight;
-                    viewPager1.setLayoutParams(params1);
-                    viewPager1.setPadding(280, 0, 280, 0);
-                   // animate(sHeight,280);
-                }
-                    return false;
-
-            }
-        });
-
-        viewPager1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (viewPager1.getHeight()<lHeight){
-
-                    params1.height=lHeight;
-                    viewPager1.setLayoutParams(params1);
-                    viewPager1.setPadding(100,0,100,0);
-
-                }
-
-                return false;
-            }
-        });
-
-
-
-        Timer timer=new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(),2000,4000);
-
-
+//        getData();
+//
+//
+//
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+//
+//            }
+//
+//            @Override
+//            public void onPageSelected(int i) {
+//                if (instaData.getData().get(i).getCarousel_media()!=null) {
+//                    n = instaData.getData().get(i).getCarousel_media().size();
+//                }
+//                else if (instaData.getData().get(i).getType().equals("image") && instaData.getData().get(i).getImages()!=null&& instaData.getData().get(i).getImages().getStandard_resolution().getUrl()!=null){
+//                    n=1;
+//
+//                }
+//                else {
+//                    n=0;
+//                }
+//               viewPager1.setAdapter(new ViewPagerAdapterS(instaData,i));
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });
+//
+//        LinearLayout.LayoutParams params=(LinearLayout.LayoutParams)viewPager.getLayoutParams();
+//        int lHeight=params.height;
+//
+//        params1=(LinearLayout.LayoutParams)viewPager1.getLayoutParams();
+//        int sHeight=params1.height;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//        viewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//
+//                if (!(viewPager1.getHeight() < lHeight)) {
+//                    params1.height = sHeight;
+//                    viewPager1.setLayoutParams(params1);
+//                    viewPager1.setPadding(280, 0, 280, 0);
+//                   // animate(sHeight,280);
+//                }
+//                    return false;
+//
+//            }
+//        });
+//
+//        viewPager1.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (viewPager1.getHeight()<lHeight){
+//
+//                    params1.height=lHeight;
+//                    viewPager1.setLayoutParams(params1);
+//                    viewPager1.setPadding(100,0,100,0);
+//
+//                }
+//
+//                return false;
+//            }
+//        });
+//
+//
+//
+//        Timer timer=new Timer();
+//        timer.scheduleAtFixedRate(new MyTimerTask(),2000,4000);
+//
+//
         Button follow=(Button)findViewById(R.id.followbutton);
         follow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -235,10 +228,10 @@ public class Discover extends AppCompatActivity {
 
             }
         });
-
-
-
-
+//
+//
+//
+//
 
 
 
@@ -305,6 +298,117 @@ public class Discover extends AppCompatActivity {
         });
     }
 
+    private void getImages() {
+        ViewPagerAdapterM adapterM = new ViewPagerAdapterM();
+        ViewPagerAdapterM adapterM2 = new ViewPagerAdapterM();
+        ViewPagerAdapterM adapterM3 = new ViewPagerAdapterM();
+//        LinearLayoutManager lm = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+//        LinearLayoutManager lm2 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+//        LinearLayoutManager lm3 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+//        viewPager.setLayoutManager(lm);
+//        vp1.setLayoutManager(lm2);
+//        vp2.setLayoutManager(lm3);
+        viewPager.setAdapter(adapterM);
+//        vp1.setAdapter(adapterM2);
+//        vp2.setAdapter(adapterM3);
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        ArrayList<String> images1 = new ArrayList<>();
+        ArrayList<String> images2 = new ArrayList<>();
+        ArrayList<String> images3 = new ArrayList<>();
+        storage.getReference("images").listAll().addOnCompleteListener(new OnCompleteListener<ListResult>() {
+            @Override
+            public void onComplete(@NonNull Task<ListResult> task) {
+                task.getResult().getItems().get(0).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        Log.d("MediaGallery", task.getResult().toString());
+                    }
+                });
+
+                if (task.getResult() != null) {
+                    List<StorageReference> items = task.getResult().getItems();
+                    if (items != null) {
+                        for (StorageReference item : items) {
+                            item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    Log.d("MediaGallery",task.getResult().toString());
+                                    adapterM.addImage(task.getResult().toString());
+                                }
+                            });
+                        }
+                    }
+                }
+
+            }
+
+
+
+        });
+
+//        storage.getReference("images2").listAll().addOnCompleteListener(new OnCompleteListener<ListResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<ListResult> task) {
+//                task.getResult().getItems().get(0).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Uri> task) {
+//                        Log.d("MediaGallery", task.getResult().toString());
+//                    }
+//                });
+//
+//                if (task.getResult() != null) {
+//                    List<StorageReference> items = task.getResult().getItems();
+//                    if (items != null) {
+//                        for (StorageReference item : items) {
+//                            item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Uri> task) {
+//                                    Log.d("MediaGallery",task.getResult().toString());
+//                                    adapterM2.addImage(task.getResult().toString());
+//                                }
+//                            });
+//                        }
+//                    }
+//                }
+//
+//            }
+//
+//
+//
+//        });
+//
+//        storage.getReference("images3").listAll().addOnCompleteListener(new OnCompleteListener<ListResult>() {
+//            @Override
+//            public void onComplete(@NonNull Task<ListResult> task) {
+//                task.getResult().getItems().get(0).getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Uri> task) {
+//                        Log.d("MediaGallery", task.getResult().toString());
+//                    }
+//                });
+//
+//                if (task.getResult() != null) {
+//                    List<StorageReference> items = task.getResult().getItems();
+//                    if (items != null) {
+//                        for (StorageReference item : items) {
+//                            item.getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Uri> task) {
+//                                    Log.d("MediaGallery",task.getResult().toString());
+//                                    adapterM3.addImage(task.getResult().toString());
+//                                }
+//                            });
+//                        }
+//                    }
+//                }
+//
+//            }
+//
+//
+//
+//        });
+    }
+
     private void getData() {
 
         if (Constants.INSTAAPI != null) {
@@ -340,7 +444,7 @@ public class Discover extends AppCompatActivity {
                         n=0;
                     }
                     if (viewPager != null) {
-                        viewPager.setAdapter(new ViewPagerAdapterM(instaData));
+//                        viewPager.setAdapter(new ViewPagerAdapterM(instaData));
                     }
                     if (viewPager1 != null) {
                         Toast.makeText(Discover.this, "Touch the view to enlarge", Toast.LENGTH_LONG).show();

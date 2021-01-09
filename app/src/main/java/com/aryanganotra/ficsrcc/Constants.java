@@ -3,7 +3,7 @@ package com.aryanganotra.ficsrcc;
 public class Constants  {
     public static String PHONE ;
     public static String EMAIL ;
-    public static String WEBSITE ;
+    public static String WEBSITE;
     public static String FACEBOOK ;
     public static String TWITTER ;
     public static String INSTA ;

@@ -33,14 +33,18 @@
         android:orientation="horizontal"
         android:weightSum="7">
 
-    <android.support.v7.widget.AppCompatAutoCompleteTextView
+    <AutoCompleteTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter name/ticker"
         android:layout_weight="7"
         android:id="@+id/tickertext"
+        android:textColor="@color/black"
         android:inputType="text"
         android:maxLines="1"
+        android:textColorHint="@color/black"
+        android:textColorLink="@color/black"
+        android:textColorHighlight="@color/black"
         android:layout_margin="5dp"
         android:imeOptions="actionDone"
         android:textAppearance="@style/MenuItems"
@@ -53,6 +57,7 @@
             android:id="@+id/tickerenter"
             android:onClick="onClick"
             android:layout_margin="5dp"
+            android:textColor="@color/white"
 
 
 
@@ -80,7 +85,7 @@
 
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
        app:cardElevation="5dp"
@@ -119,7 +124,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="^NSEI"
+                        android:text="BSE"
                         android:textSize="22sp"
                         android:layout_margin="7dp"
                         android:id="@+id/MainText"
@@ -244,7 +249,7 @@
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
 

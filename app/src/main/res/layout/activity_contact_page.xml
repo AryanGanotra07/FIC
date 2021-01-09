@@ -72,6 +72,7 @@
                 android:text="Call"
                 android:drawableLeft="@drawable/phone"
                 android:padding="10dp"
+                android:textColor="@color/white"
                 android:id="@+id/callbutton"
                 android:onClick="onClick"
                 />
@@ -104,6 +105,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="25dp"
                 android:text="Email"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/emailcontact"
                 android:padding="10dp"
                 android:id="@+id/emailbutton"
@@ -139,6 +141,7 @@
                 android:text="Visit Us"
                 android:drawableLeft="@drawable/website"
                 android:padding="10dp"
+                android:textColor="@color/white"
                 android:id="@+id/websitebutton"
                 android:onClick="onClick"
                 />

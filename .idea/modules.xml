@@ -3,8 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FIC-Connect.iml" filepath="$PROJECT_DIR$/FIC-Connect.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/lib/lib.iml" filepath="$PROJECT_DIR$/lib/lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FIC-Connect.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FIC-Connect.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/FIC-Connect.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/FIC-Connect.lib.iml" />
     </modules>
   </component>
 </project>

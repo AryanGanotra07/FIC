@@ -26,7 +26,7 @@
         android:orientation="vertical">
 
 
-        <android.support.design.card.MaterialCardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/card_view"
@@ -60,7 +60,7 @@
             </LinearLayout>
 
 
-        </android.support.design.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -112,7 +112,7 @@
 
         />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/readmode"
@@ -130,7 +130,7 @@
         app:elevation="2dp"
         />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/textsize"
@@ -151,7 +151,7 @@
 
 
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/share"

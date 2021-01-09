@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +16,9 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.aryanganotra.ficsrcc.BuildConfig;
 import com.aryanganotra.ficsrcc.Constants;
@@ -48,12 +50,9 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
 
 
     public RecyclerAdapter1(Context context,ArticlesListFragment.onItemSelectedListener callback,ArticleService service){
-
         this.context=context;
         this.callback=callback;
         this.service=service;
-
-
     }
 
     public void setArticles(List<Article> articles){
@@ -67,7 +66,7 @@ public class RecyclerAdapter1 extends RecyclerView.Adapter<RecyclerAdapter1.View
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.article_layout, viewGroup, false);
-     ViewHolder vh=new ViewHolder(v);
+        ViewHolder vh=new ViewHolder(v);
 
 return vh;
 
@@ -248,14 +247,8 @@ DynamicLinks(getAdapterPosition());
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
-
-
-
-
             articles=((ArrayList<Article>)results.values);
             notifyDataSetChanged();
-
         }
     };
 

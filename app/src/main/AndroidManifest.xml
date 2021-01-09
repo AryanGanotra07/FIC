@@ -16,11 +16,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".SplashScreen"
+            android:name="com.aryanganotra.ficsrcc.SplashScreen"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreen">
@@ -31,10 +30,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FirebaseAuthUI"
+            android:name="com.aryanganotra.ficsrcc.FirebaseAuthUI"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".UserActivity"
+            android:name="com.aryanganotra.ficsrcc.UserActivity"
             android:screenOrientation="portrait"
             android:theme="@style/GreenTheme1">
 
@@ -53,20 +52,20 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".AboutPage"
+            android:name="com.aryanganotra.ficsrcc.AboutPage"
             android:screenOrientation="portrait"
             android:theme="@style/GreenTheme" />
         <activity
-            android:name=".ContactPage"
+            android:name="com.aryanganotra.ficsrcc.ContactPage"
             android:screenOrientation="portrait"
             android:theme="@style/GreenTheme" />
         <activity
-            android:name=".SavedArticles"
+            android:name="com.aryanganotra.ficsrcc.SavedArticles"
             android:screenOrientation="portrait"
             android:theme="@style/GreenTheme" />
 
         <service
-            android:name=".MyMessagingService"
+            android:name="com.aryanganotra.ficsrcc.MyMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -85,7 +84,7 @@
             android:resource="@color/colorPrimary" />
 
         <activity
-            android:name=".Discover"
+            android:name="com.aryanganotra.ficsrcc.Discover"
             android:screenOrientation="portrait"
             android:theme="@style/GreenTheme" />
     </application>
